@@ -26,8 +26,8 @@ steps:
     inputFile: templates/maintenance.yaml
   - kind: networking
     function:
-      name: xpkg.crossplane.io/crossplane-contrib/function-sequencer
-      versionConstraint: ">=v0.5.0"
+      name: xpkg.upbound.io/crossplane-contrib/function-kcl
+      versionConstraint: ">=v0.10.0"
     inputFile: templates/networking.yaml
 schemaFragments:
   size: schemas/size.yaml
