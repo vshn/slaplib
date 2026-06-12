@@ -2,7 +2,7 @@ apiVersion: slapper.appslap.io/v1alpha1
 kind: Stdlib
 metadata:
   name: stdlib
-  version: 0.0.0
+  version: 0.0.1
 steps:
   - kind: provisioning
     function:
