@@ -10,11 +10,11 @@ release: ## Update version in stdlib.yaml, tag and push. Usage: make release VER
 	@echo "$(VERSION)" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$$' || { echo "VERSION must be semver (e.g. 1.2.3)"; exit 1; }
 	@if [ -n "$$(git status --porcelain)" ]; then echo "working tree dirty, commit or stash first"; exit 1; fi
 	@branch=$$(git rev-parse --abbrev-ref HEAD); \
-	if [ "$$branch" != "master" ]; then echo "must release from master (on $$branch)"; exit 1; fi
-	git pull --ff-only origin master
+	if [ "$$branch" != "main" ]; then echo "must release from main (on $$branch)"; exit 1; fi
+	git pull --ff-only origin main
 	yq -i '.metadata.version = "$(VERSION)"' stdlib.yaml
 	git add stdlib.yaml
 	git commit -m "chore: release v$(VERSION)"
 	git tag -a "v$(VERSION)" -m "Release v$(VERSION)"
-	git push origin master
+	git push origin main
 	git push origin "v$(VERSION)"
